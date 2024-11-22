@@ -60,6 +60,9 @@ def home():
 
     predictions['date'] = predictions['date'].apply(format_date)
 
+    # **Sort the predictions by home win probability**
+    predictions = predictions.sort_values(by='home_probability', ascending=False)
+
     # Render the predictions table to HTML
     return render_template(
         "predictions.html",
