@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Predictions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0044cc;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #0044cc;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+        img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Football Predictions with Odds</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Predicted Result</th>
+                    <th>Home Probability (%)</th>
+                    <th>Draw Probability (%)</th>
+                    <th>Away Probability (%)</th>
+                    <th>Best Home Odd</th>
+                    <th>Best Draw Odd</th>
+                    <th>Best Away Odd</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in predictions %}
+                <tr>
+                    <td>{{ row.date }}</td>
+                    <td>
+                        <img src="{{ row.home_team_logo }}" alt="{{ row.home_team_name }} logo">
+                        <br>{{ row.home_team_name }}
+                    </td>
+                    <td>
+                        <img src="{{ row.away_team_logo }}" alt="{{ row.away_team_name }} logo">
+                        <br>{{ row.away_team_name }}
+                    </td>
+                    <td>{{ row.predicted_result }}</td>
+                    <td>{{ row.home_probability }}%</td>
+                    <td>{{ row.draw_probability }}%</td>
+                    <td>{{ row.away_probability }}%</td>
+                    <td>{{ row.best_home_odd }}</td>
+                    <td>{{ row.best_draw_odd }}</td>
+                    <td>{{ row.best_away_odd }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>© {{ current_year }} Football Predictions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
